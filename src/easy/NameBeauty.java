@@ -16,6 +16,18 @@ import java.util.*;
  */
 
 public class NameBeauty {
+    // 使用库函数会报错。
+    private static String tolowCase(String str){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < str.length(); ++i) {
+            char ch = str.charAt(i);
+            if (ch >= 'A' && ch <= 'Z')
+                ch = (char)(ch + 32);
+            stringBuilder.append(ch);
+        }
+        return stringBuilder.toString();
+    }
+
     private static int beauty(String str) {
         int bty = 0;
         int [] times = new int[26];
@@ -38,9 +50,8 @@ public class NameBeauty {
         int N = in.nextInt();
         String [] str = new String[N];
         for (int i = 0; i < N && in.hasNext(); ++i)
-            str[i] = in.next().toLowerCase();
+            str[i] = tolowCase(in.next());
         for (int i = 0; i < N; ++i)
             System.out.println(beauty(str[i]));
-
     }
 }
